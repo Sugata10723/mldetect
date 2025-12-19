@@ -74,13 +74,6 @@ DATA_PATH = "/Users/yourname/mldetect/FabIoT-Dataset-main/data/"
 ```bash
 jupyter notebook
 ```
-
-または、トークン認証なしで起動する場合：
-
-```bash
-jupyter notebook --no-browser --ip=127.0.0.1
-```
-
 表示されたURL（`http://127.0.0.1:8888/?token=...`）をブラウザで開きます。
 
 **ノートブックの実行:**
@@ -93,9 +86,7 @@ jupyter notebook --no-browser --ip=127.0.0.1
 ### セル1: ライブラリのインポート
 ```python
 import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 ```
@@ -157,14 +148,9 @@ for model in models:
 ```
 
 **何をしているか:**
-1. 複数のモデルで学習を実施
+1. モデルで学習を実施
 2. 訓練データでモデルを学習（fit）
 3. テストデータで精度を評価（score）
-
-**結果:**
-- Random Forest Classifier: **100%の精度** → 完璧に分類
-- K-Neighbors Classifier: 91.3%の精度 → 高精度
-- Linear Regression: 32.1%の精度 → 分類問題には不適
 
 ## 仮想環境の終了
 
