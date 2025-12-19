@@ -57,18 +57,33 @@ DATA_PATH = "/path/to/your/FabIoT-Dataset-main/data/"
 DATA_PATH = "/Users/yourname/mldetect/FabIoT-Dataset-main/data/"
 ```
 
-### 5. Jupyter Notebookの起動
+### 5. 実行方法
 
-仮想環境を有効化した状態で、Jupyter Notebookを起動します：
+#### 方法A: VSCodeで実行
+
+1. VSCodeで [main.ipynb](main.ipynb) を開く
+2. 右上のカーネル選択で、作成した仮想環境の Python インタープリタ（`./venv/bin/python3`）を選択
+   - 「カーネルの選択」→「Python環境」→「venv」を選択
+3. 各セルを順番に実行（`Shift + Enter` または各セルの左側の「▶」ボタン）
+4. すべてのセルを一度に実行する場合は、上部の「すべて実行」ボタンをクリック
+
+#### 方法B: Jupyter Notebookをブラウザで起動
+
+仮想環境を有効化した状態で、以下のコマンドを実行します：
 
 ```bash
 jupyter notebook
 ```
 
-ブラウザが自動的に開き、Jupyter Notebookのインターフェースが表示されます。
+または、トークン認証なしで起動する場合：
 
-### 6. ノートブックの実行
+```bash
+jupyter notebook --no-browser --ip=127.0.0.1
+```
 
+表示されたURL（`http://127.0.0.1:8888/?token=...`）をブラウザで開きます。
+
+**ノートブックの実行:**
 1. 開いたブラウザで [main.ipynb](main.ipynb) をクリック
 2. 各セルを順番に実行（`Shift + Enter` または上部の「▶ Run」ボタン）
 3. すべてのセルを一度に実行する場合は、メニューから「Cell」→「Run All」を選択
@@ -171,10 +186,26 @@ deactivate
 - Pythonのバージョンを確認: `python3 --version`（3.9以上が必要）
 - pipを最新版にアップデート: `pip install --upgrade pip`
 
-### Jupyter Notebookが起動しない場合
+### Jupyter Notebookが起動しない/コマンドが見つからない場合
 
-- 仮想環境が有効化されているか確認（プロンプトに `(venv)` が表示されているか）
-- 再度インストール: `pip install jupyter`
+**症状:** `jupyter: command not found` と表示される
+
+**解決方法:**
+1. 仮想環境が有効化されているか確認（プロンプトに `(venv)` が表示されているか）
+2. 仮想環境を有効化してから再度インストール:
+   ```bash
+   source venv/bin/activate
+   pip install jupyter
+   ```
+3. それでも解決しない場合は、VSCodeで実行する方法（方法A）を試してください
+
+### VSCodeでカーネルが選択できない場合
+
+**解決方法:**
+1. VSCodeの拡張機能「Python」と「Jupyter」がインストールされているか確認
+2. コマンドパレット（`Cmd + Shift + P`）から「Python: Select Interpreter」を選択
+3. `./venv/bin/python3` を選択
+4. ノートブックを再度開く
 
 ## ファイル構成
 
